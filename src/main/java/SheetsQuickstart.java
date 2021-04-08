@@ -75,7 +75,7 @@ public class SheetsQuickstart {
         if (values == null || values.isEmpty()) {
             System.out.println("No data found.");
         } else {
-            System.out.println("Name, Major");
+            System.out.println("CustomerData");
             for (List row : values) {
                 // Print columns A and E, which correspond to indices 0 and 4.
                 System.out.printf("%s, %s %s, %s, %s, %s\n", row.get(0), row.get(1), row.get(2), row.get(3), row.get(4), row.get(5));
