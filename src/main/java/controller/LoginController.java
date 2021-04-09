@@ -3,7 +3,7 @@ package controller;
 /**
  * LoginController
  */
-public class AuthController implements Controller {
+public class LoginController implements Controller {
 
     
 }
