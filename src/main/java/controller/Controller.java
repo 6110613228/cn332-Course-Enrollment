@@ -5,5 +5,5 @@ package controller;
  */
 interface Controller {
 
-    public void execute(int Id);
+    public void execute();
 }
