@@ -40,7 +40,7 @@ public class DB {
     private static final List<String> SCOPES = Collections.singletonList(SheetsScopes.SPREADSHEETS_READONLY);
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
-    NetHttpTransport HTTP_TRANSPORT;
+    private NetHttpTransport HTTP_TRANSPORT;
     public final String spreadsheetId = "1DxtOiUtrHAg91Ui-A4xYYjMNkj8TMjLKcVKenF2yKIU";
 
     private static Sheets dbInstance = null;
