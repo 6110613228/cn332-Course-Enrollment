@@ -1,7 +1,9 @@
+package controller;
+
 /**
  * Controller
  */
-public interface Controller {
+interface Controller {
 
     public void execute(int Id);
 }
