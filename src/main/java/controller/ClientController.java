@@ -22,6 +22,7 @@ public class ClientController {
 
     private String username;
     private String password;
+    private String command;
 
     public void run() throws Exception {
         while(true) {
@@ -29,8 +30,15 @@ public class ClientController {
             // if user is already authenticated then run, if not login
             if (user.isAuth()) {
                 System.out.print("Waiting for command $ ");
-                s.nextLine();
-                break;
+                command = s.nextLine();
+                System.out.println();
+                
+                if (command.equals("exit") || command.equals("q") || command.equals("quit")) {
+                    System.out.println("Thank you, " + username);
+                    System.out.println("Exit program");
+                    System.out.println("...");
+                    break;
+                }
             } else {
                 System.out.println(view.head());
                 System.out.println("Please Login.");
