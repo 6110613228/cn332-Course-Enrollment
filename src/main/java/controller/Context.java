@@ -14,4 +14,8 @@ public class Context {
     public void execute() {
         controller.execute();
     }
+
+    public void execute(Object a, Object b) {
+        controller.execute(a, b);
+    }
 }

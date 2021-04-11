@@ -8,9 +8,12 @@ import java.security.GeneralSecurityException;
  */
 public class Client {
 
-    public static void main(String[] args) throws IOException, GeneralSecurityException {
+    public static void main(String[] args) {
 
-        Context context = new Context(new LoginController());
-        context.execute();
+        LoginController l = new LoginController();
+        Context context = new Context(l);
+        context.execute("Triss", "triss");
+        
+        System.out.println(l.isAuth());
     }
 }
