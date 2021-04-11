@@ -29,6 +29,7 @@ public class ClientController {
 
             // if user is already authenticated then run, if not login
             if (user.isAuth()) {
+                view.head(username);
                 System.out.print("Waiting for command $ ");
                 command = s.nextLine();
                 System.out.println();
@@ -40,7 +41,7 @@ public class ClientController {
                     break;
                 }
             } else {
-                System.out.println(view.head());
+                view.head();
                 System.out.println("Please Login.");
                 System.out.print("username : ");
                 username = s.nextLine();
