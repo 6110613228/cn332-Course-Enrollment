@@ -10,6 +10,8 @@ import java.security.GeneralSecurityException;
 
 /**
  * UserModel
+ * 
+ * Provide all Model's sub classes a connection with DB.
  */
 public abstract class Model {
 
