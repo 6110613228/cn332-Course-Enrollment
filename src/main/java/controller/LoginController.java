@@ -7,9 +7,9 @@ import java.util.List;
 /**
  * LoginController
  */
-public class LoginController implements Controller {
+class LoginController implements Controller {
 
-    private Boolean authStatus = false; 
+    private Boolean authStatus = false;
 
     public void login(String username, String password) {
         

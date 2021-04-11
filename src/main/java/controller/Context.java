@@ -3,7 +3,7 @@ package controller;
 /**
  * Context
  */
-public class Context {
+class Context {
 
     private Controller controller;
 
