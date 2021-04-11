@@ -38,6 +38,7 @@ public class ClientController {
                     System.out.println("Thank you, " + username);
                     System.out.println("Exit program");
                     System.out.println("...");
+                    view.foot();
                     break;
                 } else {
                     System.out.println("Unknow command.");
@@ -54,7 +55,8 @@ public class ClientController {
                 context = new Context(user);
                 context.execute(username, password);
             }
-            System.out.println("...\n");
+            System.out.println("...");
+            view.foot();
             TimeUnit.SECONDS.sleep(1);
         }
     }
