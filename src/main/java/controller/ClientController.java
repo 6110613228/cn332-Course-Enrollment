@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ClientController {
 
-    private LoginController user = new LoginController();
+    private AuthController user = new AuthController();
     private Context context;
 
     private View view = new View();
