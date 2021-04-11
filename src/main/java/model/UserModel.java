@@ -18,9 +18,22 @@ public class UserModel extends Model {
 
     public List<List<Object>> getUsers() throws IOException {
 
-        ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Sheet1!A2:F").execute();
+        ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Users!A2:F").execute();
         List<List<Object>> query = data.getValues();
 
         return query;
+    }
+
+    public List getUser(int Id) throws IOException {
+
+        // Assume that Id is unique
+        List<List<Object>> users = getUsers();
+
+        for (List row : users) {
+            if (row.get(0).equals("" + Id)) {
+                return row;
+            }
+        }
+        return null;
     }
 }
