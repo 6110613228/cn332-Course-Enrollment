@@ -8,7 +8,10 @@
 
 Suggested command to execute program
 
-> ./gradlew run --console=plain
+
+```bash
+./gradlew run --console=plain
+```
 
 ### [Diagram](https://drive.google.com/file/d/1TTBXyCYtnWH27qlyUgyRRR6Qz9za2iwF/view?usp=sharing)
 
