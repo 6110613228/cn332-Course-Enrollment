@@ -31,6 +31,8 @@ public class LoginController implements Controller {
 
     public void execute() {}
 
+    public void execute(Object username) {}
+
     public void execute(Object username, Object password) {
         try {
             login((String)username, (String)password);
