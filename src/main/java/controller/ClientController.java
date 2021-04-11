@@ -32,9 +32,9 @@ public class ClientController {
                 view.head(username);
                 System.out.print("Waiting for command $ ");
                 command = s.nextLine();
-                System.out.println();
                 
                 if (command.equals("exit") || command.equals("q") || command.equals("quit")) {
+                    System.out.println();
                     System.out.println("Thank you, " + username);
                     System.out.println("Exit program");
                     System.out.println("...");
