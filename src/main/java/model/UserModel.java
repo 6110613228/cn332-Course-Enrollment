@@ -4,6 +4,7 @@ import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
@@ -40,6 +41,22 @@ public class UserModel extends Model {
             }
         }
         return null;
+    }
+
+    public List<List<Object>> getUsers(String username) {
+
+        List<List<Object>> users = getUsers();
+        List<List<Object>> foundUsers = new ArrayList<>();
+        for (List row : users) {
+            if (row.get(1).equals(username)) {
+                foundUsers.add(row);
+            }
+        }
+
+        if (foundUsers.size() == 0) {
+            return null;
+        }
+        return foundUsers;
     }
 
     public List getUser(String username, String password) {
