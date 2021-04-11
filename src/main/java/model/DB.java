@@ -41,7 +41,6 @@ public class DB {
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
     private NetHttpTransport HTTP_TRANSPORT;
-    public final String spreadsheetId = "1DxtOiUtrHAg91Ui-A4xYYjMNkj8TMjLKcVKenF2yKIU";
 
     private static Sheets dbInstance = null;
 
@@ -82,17 +81,4 @@ public class DB {
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
-
-    /*
-    public List query(String range) {
-        // Sheet1:A2:F
-        ValueRange response = db.getInstance().spreadsheets().values()
-                .get(spreadsheetId, range)
-                .execute();
-
-        List<List<Object>> query = response.getValues();
-
-        return query;
-    }
-    */
 }
