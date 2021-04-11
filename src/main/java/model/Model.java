@@ -20,7 +20,13 @@ public abstract class Model {
     private DB db = new DB();
     public Sheets connection;
 
-    public Model() throws IOException, GeneralSecurityException {
-        this.connection = db.getInstance();
+    public Model() {
+        try {
+            this.connection = db.getInstance();
+        } catch(Exception e) {
+            System.out.println(e);
+            System.exit(0);
+        }
+        
     }
 }

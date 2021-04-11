@@ -12,25 +12,42 @@ import java.security.GeneralSecurityException;
  */
 public class UserModel extends Model {
 
-    public UserModel() throws IOException, GeneralSecurityException {
+    public UserModel() {
         super();
     }
 
-    public List<List<Object>> getUsers() throws IOException {
+    public List<List<Object>> getUsers() {
 
-        ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Users!A2:F").execute();
-        List<List<Object>> query = data.getValues();
-
+        List<List<Object>> query = null;
+        try {
+            ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Users!A2:G").execute();
+            query = data.getValues();
+        } catch (IOException e) {
+            System.out.println(e);
+            System.exit(0);
+        }
         return query;
     }
 
-    public List getUser(int Id) throws IOException {
+    public List getUser(int Id) {
 
         // Assume that Id is unique
         List<List<Object>> users = getUsers();
 
         for (List row : users) {
             if (row.get(0).equals("" + Id)) {
+                return row;
+            }
+        }
+        return null;
+    }
+
+    public List getUser(String username, String password) {
+
+        List<List<Object>> users = getUsers();
+
+        for (List row : users) {
+            if (row.get(1).equals(username) && row.get(3).equals(password)) {
                 return row;
             }
         }
