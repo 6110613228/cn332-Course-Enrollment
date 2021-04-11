@@ -39,6 +39,8 @@ public class ClientController {
                     System.out.println("Exit program");
                     System.out.println("...");
                     break;
+                } else {
+                    System.out.println("Unknow command.");
                 }
             } else {
                 view.head();
