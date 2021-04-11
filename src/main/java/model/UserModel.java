@@ -10,7 +10,7 @@ import java.security.GeneralSecurityException;
 /**
  * UserModel
  */
-public class UserModel extends Model{
+public class UserModel extends Model {
 
     public UserModel() throws IOException, GeneralSecurityException {
         super();
