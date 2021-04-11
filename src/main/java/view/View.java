@@ -5,5 +5,7 @@ package view;
  */
 public class View {
 
-    
+    public String head() {
+        return "===========================================";
+    }
 }
