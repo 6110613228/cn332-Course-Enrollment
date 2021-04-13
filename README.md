@@ -31,15 +31,15 @@ Suggested command to execute program
 
 ## features
 
-1. Authentication
-2. Registration
-3. Role management (Role Acessibility)
+1. Authentication (3228)
+2. Registration (3228)
+3. Role management (Role Acessibility) (3228)
     - admin
     - teacher
     - student
-4. Course Enrollment
-5. Course cancelation (Drop)
-6. Show enrollment rating
-7. Show information
-8. Show report
-9. Log file
+4. Course Enrollment (3129)
+5. Course cancelation (Drop) (3129)
+6. Show enrollment rating (3087)
+7. Show information (3087)
+8. Show report (3087)
+9. Log file (3129)
