@@ -10,7 +10,7 @@
 
 ## Working directory
 
-![Tree](https://user-images.githubusercontent.com/61135042/114304796-4e8af680-9aff-11eb-9fbe-2b2c6dda8234.JPG)
+![Tree](https://user-images.githubusercontent.com/61135042/114538718-df87dc00-9c7d-11eb-8d09-ea8790ef813b.JPG)
 
 ## Work flow
 
@@ -31,15 +31,15 @@ Suggested command to execute program
 
 ## features
 
-1. Authentication
-2. Registration
-3. Role management (Role Acessibility)
+1. Authentication (3228)
+2. Registration (3228)
+3. Role management (Role Acessibility) (3228)
     - admin
     - teacher
     - student
-4. Course Enrollment
-5. Course cancelation (Drop)
-6. Show enrollment rating
-7. Show information
-8. Show report
-9. Log file
+4. Course Enrollment (3129)
+5. Course cancelation (Drop) (3129)
+6. Show enrollment rating (3087)
+7. Show information (3087)
+8. Show report (3087)
+9. Log file (3129)
