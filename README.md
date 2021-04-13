@@ -10,7 +10,7 @@
 
 ## Working directory
 
-![Tree](https://user-images.githubusercontent.com/61135042/114304796-4e8af680-9aff-11eb-9fbe-2b2c6dda8234.JPG)
+![Tree](https://user-images.githubusercontent.com/61135042/114538718-df87dc00-9c7d-11eb-8d09-ea8790ef813b.JPG)
 
 ## Work flow
 
