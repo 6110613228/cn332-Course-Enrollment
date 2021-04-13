@@ -1,10 +1,11 @@
 package controller;
 
-import view.View;
+import view.MainView;
+import model.UserModel;
 
 import java.util.Scanner;
-
 import java.util.concurrent.TimeUnit;
+import java.util.List;
 import java.util.ArrayList;
 /**
  * ClientController
@@ -14,9 +15,10 @@ import java.util.ArrayList;
 public class ClientController {
 
     private AuthController user = new AuthController();
+    private UserModel userModel = new UserModel();
     private Context context;
 
-    private View view = new View();
+    private MainView view = new MainView();
 
     Scanner s = new Scanner(System.in);
 
@@ -29,21 +31,41 @@ public class ClientController {
 
             // if user is already authenticated then run, if not login
             if (user.isAuth()) {
+
                 view.head(username);
-                System.out.print("Waiting for command $ ");
+
+                view.waiting();
                 command = s.nextLine();
                 
+                // Admin only scope
+                if (user.getRole() > 1) {
+
+                    if (command.equals("show users")) {
+
+                        List<List<Object>> data = userModel.getUsers();
+                        for (List row : data) {
+                            System.out.println(row);
+                        }
+                    }
+                }
+
+                // Admin and teacher scope
+                if (user.getRole() > 0) {
+                    
+                    // do something
+                }
+
+                // Global scope
                 if (command.equals("exit") || command.equals("q") || command.equals("quit")) {
-                    System.out.println();
-                    System.out.println("Thank you, " + username);
-                    System.out.println("Exit program");
-                    System.out.println("...");
-                    view.foot();
+
+                    // Exit sequence
+                    view.exit(username);
                     break;
                 } else {
                     System.out.println("Unknow command.");
                 }
             } else {
+
                 view.head();
                 System.out.println("Please Login.");
                 System.out.print("username : ");
