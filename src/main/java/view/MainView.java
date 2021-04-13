@@ -3,7 +3,7 @@ package view;
 /**
  * View
  */
-public class View {
+public class MainView {
 
     private String line = "===========================================";
 
@@ -29,11 +29,23 @@ public class View {
         System.out.println();
     }
 
+    public void waiting() {
+        System.out.print("Waiting for command $ ");
+    }
+
     public void foot() {
         System.out.println();
         System.out.println(line);
-        System.out.println("= footer ==================================");
         System.out.println(line);
         System.out.println();
     }
+
+    public void exit(String username) {
+        System.out.println();
+        System.out.println("Thank you, " + username);
+        System.out.println("Exit program");
+        System.out.println("...");
+        foot();
+    }
+
 }
