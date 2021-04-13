@@ -6,7 +6,6 @@ import com.google.api.services.sheets.v4.model.ValueRange;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.IOException;
-import java.security.GeneralSecurityException;
 
 /**
  * UserModel
@@ -21,7 +20,7 @@ public class UserModel extends Model {
 
         List<List<Object>> query = null;
         try {
-            ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Users!A2:G").execute();
+            ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Users!A2:J").execute();
             query = data.getValues();
         } catch (IOException e) {
             System.out.println(e);
