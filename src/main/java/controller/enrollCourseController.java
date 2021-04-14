@@ -17,7 +17,7 @@ class enrollCourseController implements Controller {
         // TODO Auto-generated method stub
         
     }
-    //input is cID ,only student can enroll course with one input
+    //input is cID ,only student can use this method
     @Override
     public void execute(Object a) {
         // TODO Auto-generated method stub
@@ -45,7 +45,7 @@ class enrollCourseController implements Controller {
     }
 
     @Override
-    //if admin want to corruption use this 
+    // admin can use this method
     //a = username ,b = cID
     public void execute(Object a, Object b) {
         // TODO Auto-generated method stub
