@@ -11,7 +11,7 @@ public class Logfile extends Observer {
     public Logfile(String filename) {
         try {
             this.filename = filename;
-            fh = new FileHandler("./" + this.filename + ".log");
+            fh = new FileHandler("./" + this.filename + ".log",true);
             logger = Logger.getLogger(filename);
             SimpleFormatter formatter = new SimpleFormatter();
             fh.setFormatter(formatter);
@@ -21,6 +21,7 @@ public class Logfile extends Observer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
     }
 
     public void update(Object detail) {
