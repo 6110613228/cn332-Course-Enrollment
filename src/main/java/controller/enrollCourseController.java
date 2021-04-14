@@ -22,13 +22,13 @@ class enrollCourseController implements Controller {
     public void execute(Object a) {
         // TODO Auto-generated method stub
     
-        int cID = a;
-        List<String> userCourse = user.getUser(this.username); 
+        String cID = ""+a;
         List<String> enrollCourse = course.getCourse(cID);
+        List<List<Object>> userCourse = user.getUsers("username"); 
         int quota =  Integer.parseInt(enrollCourse.get(4));
 
         for (List row : userCourse) {
-            if (row.get(8).equals(String(cID))) {
+            if (row.get(8).equals(""+cID)) {
                 System.out.println("You have already enroll this course.");
                 return;
             }
@@ -39,7 +39,7 @@ class enrollCourseController implements Controller {
         }
         else{
             quota = quota -1 ;
-            enrollCourse.set(4,String(quota));
+            enrollCourse.set(4,""+quota);
             System.out.println("enroll Successful");
         }
     }
@@ -49,14 +49,14 @@ class enrollCourseController implements Controller {
     //a = username ,b = cID
     public void execute(Object a, Object b) {
         // TODO Auto-generated method stub
-        int cID = b;
-        List<String> userCourse = user.getUser(String(a)); 
+        String cID  = ""+b;
+        List<List<Object>> userCourse = user.getUsers(""+a); 
         List<String> enrollCourse = course.getCourse(cID);
         int quota =  Integer.parseInt(enrollCourse.get(4));
 
         for (List row : userCourse) {
-            if (row.get(8).equals(String(cID))) {
-                System.out.println(String(a)+" have already enroll this course.");
+            if (row.get(8).equals(cID)) {
+                System.out.println(a+" have already enroll this course.");
                 return;
             }
         }
@@ -66,7 +66,7 @@ class enrollCourseController implements Controller {
         }
         else{
             quota = quota -1 ;
-            enrollCourse.set(4,String(quota));
+            enrollCourse.set(4,""+quota);
             System.out.println("enroll Successful");
         }
 

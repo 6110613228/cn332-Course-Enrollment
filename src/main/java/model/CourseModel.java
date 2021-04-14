@@ -26,13 +26,13 @@ public class CourseModel extends Model {
         }
         return query;
     }
-    public List getCourse(int cId) {
+    public List getCourse(String cId) {
 
         // Assume that Id is unique
         List<List<Object>> course = getCourse();
 
         for (List row : course) {
-            if (row.get(0).equals(String(cId))) {
+            if (row.get(0).equals(cId)) {
                 return row;
             }
         }
