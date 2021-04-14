@@ -41,24 +41,34 @@ public class ClientController {
                 setFlag();
 
                 // Admin only scope
-                if (user.getRole() > 1) {
+                if (user.getRole().equals("admin")) {
 
                     switch (command) {
-                        case "status":
+                        case "admin":
                             System.out.println("Admin");
                             clearFlag();
                             break;
-                        default:
+                        case "show users":
+                            List<List<Object>> data = userModel.getUsers();
+                            for (List row : data) {
+                                System.out.println(row);
+                            }
+                            clearFlag();
                             break;
                     }
                 }
 
                 // Admin and teacher scope
-                if (user.getRole() > 0) {
+                if (user.getRole().equals("admin") || user.getRole().equals("teacher")) {
                     
                     // do something
                 }
                 
+                // Student scope
+                if (user.getRole().equals("student")) {
+
+                }
+
                 // Global scope
                 if (true) {
                     if (command.equals("exit") || command.equals("q") || command.equals("quit")) {
@@ -66,6 +76,13 @@ public class ClientController {
                         // Exit sequence
                         view.exit(username);
                         break;
+                    }
+
+                    switch (command) {
+                        case "role":
+                            System.out.printf("My role is %s\n", user.getRole());
+                            clearFlag();
+                            break;
                     }
                 }
 
