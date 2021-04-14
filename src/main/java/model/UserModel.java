@@ -2,9 +2,11 @@ package model;
 
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import com.google.api.services.sheets.v4.model.UpdateValuesResponse;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.io.IOException;
 
@@ -71,28 +73,43 @@ public class UserModel extends Model {
         return null;
     }
 
+    /**
+     * @param none
+     * @return Maximum id from usermodel, if error occur return -1
+     */
     public int getLastId() {
-        List<List<Integer>> query;
+        List<List<Object>> query;
+        ArrayList<Integer> result = new ArrayList<Integer>();
         try {
             ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Users!A2:A").execute();
             query = data.getValues();
-            System.out.println(query);
+            for (List row : query) {
+                result.add(Integer.parseInt((String)row.get(0)));
+            }
+            return Collections.max(result);
         } catch (Exception e) {
-            // 
+            System.out.println(e);
         }
+        return -1;
     }
 
+    
     public boolean addUser(String name, String surname, String password, String address, String phone, String email) {
 
-        // String data[] = {getLastId(), name, surname, password, address, phone, email, "student"};
+        Object data[] = {Integer.toString(getLastId()+1), name, surname, password, address, phone, email, "student"};
 
-        List<List<Object>> values = Arrays.asList(Array.asList(data));
+        List<List<Object>> values = Arrays.asList(Arrays.asList(data));
+
         ValueRange body = new ValueRange().setValues(values);
-        UpdateValuesResponse result = service.spreadsheets().values().update(spreadsheetId, String.format("Users!A%s:H", getLastId()-1), body)
-                                            .setValueInputOption(valueInputOption)
+        try {
+            String range = String.format("Users!A%s:H%s", getLastId()+2, getLastId()+2);
+            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body)
+                                            .setValueInputOption("USER_ENTERED")
                                             .execute();
-
-        System.out.printf("%d cells updated.", result.getUpdatedCells());
-        return true;
+            return true;
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return false;
     }
 }

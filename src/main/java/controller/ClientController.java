@@ -131,8 +131,11 @@ public class ClientController {
                         RegisterController registee = new RegisterController();
                         registee.set(username, surname, password, address, phone, email);
                         
-                        centext = new Context(registee);
+                        context = new Context(registee);
                         context.execute();
+
+                        context = new Context(user);
+                        context.execute(username, password);
                     } else {
                         System.out.println("Unknow command.");
                     }
