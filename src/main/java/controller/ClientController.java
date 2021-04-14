@@ -93,15 +93,36 @@ public class ClientController {
             } else {
 
                 view.head();
-                System.out.println("Please Login.");
-                System.out.print("username : ");
-                username = s.nextLine();
-                System.out.print("password : ");
-                password = s.nextLine();
-                System.out.println();
 
-                context = new Context(user);
-                context.execute(username, password);
+                System.out.println("Please Login or Register to the system.");
+                System.out.println("Type register or login to continue...");
+                System.out.print("$ ");
+
+                command = s.nextLine();
+                
+                while (!user.isAuth()) {
+                    if (command.equals("login")) {
+                        System.out.print("username : ");
+                        username = s.nextLine();
+                        System.out.print("password : ");
+                        password = s.nextLine();
+                        System.out.println();
+                        context = new Context(user);
+                        context.execute(username, password);
+                    } else if (command.equals("register")) {
+                        System.out.println();
+                        System.out.println("You are registering as a \"Student\".");
+                        System.out.println("If you want to access using teacher account please contact admin...");
+                        System.out.println();
+                        System.out.print("Please enter your username : ");
+                        username = s.nextLine();
+                        System.out.print("Please enter your password : ");
+                        password = s.nextLine();
+                        System.out.println();
+                    } else {
+                        System.out.println("Unknow command.");
+                    }
+                }
             }
             System.out.println("...");
             view.foot();
