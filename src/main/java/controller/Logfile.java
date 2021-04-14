@@ -3,7 +3,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-public class Logfile extends Observer {
+public class Logfile {
     private String filename;
     private Logger logger;
     private FileHandler fh;
@@ -25,7 +25,7 @@ public class Logfile extends Observer {
     }
 
     public void update(Object detail,String result) {
-        logger.info(this.username+":"+this.getRole()+" "+(String) detail+" "+result);
+        logger.info((String) detail+" "+result);
     }
     
 

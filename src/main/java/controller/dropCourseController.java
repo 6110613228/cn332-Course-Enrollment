@@ -10,7 +10,8 @@ import jdk.javadoc.internal.doclets.formats.html.SourceToHTMLConverter;
  * dropCourseController
  */
 class dropCourseController implements Controller {
-
+    CourseModel course = new CourseModel();
+    UserModel user = new UserModel();
     @Override
     public void execute() {
         // TODO Auto-generated method stub
@@ -21,15 +22,15 @@ class dropCourseController implements Controller {
         //input is cID student can use this method
     public void execute(Object a) {
         // TODO Auto-generated method stub
-        int cID = a;
-        List<String> userCourse = user.getUser(this.username); 
+        String cID = ""+a;
+        List<List<Object>> userCourse = user.getUsers("username"); 
         List<String> enrollCourse = course.getCourse(cID);
         int quota =  Integer.parseInt(enrollCourse.get(4));
 
         for (List row : userCourse) {
-            if (row.get(8).equals(String(cID))) {
+            if (row.get(8).equals(""+cID)) {
                 quota = quota+1;
-                enrollCourse.set(4,String(quota));
+                enrollCourse.set(4,""+quota);
                 System.out.println("drop Successful.");
                 return;
             }
@@ -43,21 +44,21 @@ class dropCourseController implements Controller {
     @Override
     public void execute(Object a, Object b) {
         // TODO Auto-generated method stub
-        int cID = b;
-        List<String> userCourse = user.getUser(String(a)); 
+        String cID  = ""+b;
+        List<List<Object>> userCourse = user.getUsers(""+a); 
         List<String> enrollCourse = course.getCourse(cID);
         int quota =  Integer.parseInt(enrollCourse.get(4));
 
         for (List row : userCourse) {
-            if (row.get(8).equals(String(cID))) {
+            if (row.get(8).equals(cID)) {
                 quota = quota+1;
-                enrollCourse.set(4,String(quota));
+                enrollCourse.set(4,""+quota);
                 System.out.println("drop Successful.");
                 return;
             }
         }
 
-        System.out.println(String(a)+" have no enroll this course.");
+        System.out.println(a+" have no enroll this course.");
         
     }
 }

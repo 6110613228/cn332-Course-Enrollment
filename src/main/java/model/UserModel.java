@@ -12,7 +12,7 @@ import java.io.IOException;
  * UserModel
  */
 public class UserModel extends Model {
-
+    
     public UserModel() {
         super();
     }
