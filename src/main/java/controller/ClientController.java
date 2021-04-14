@@ -114,11 +114,25 @@ public class ClientController {
                         System.out.println("You are registering as a \"Student\".");
                         System.out.println("If you want to access using teacher account please contact admin...");
                         System.out.println();
-                        System.out.print("Please enter your username : ");
+                        System.out.print("Please enter your username(your first name) : ");
                         username = s.nextLine();
+                        System.out.print("Please enter your surname : ");
+                        String surname = s.nextLine();
                         System.out.print("Please enter your password : ");
                         password = s.nextLine();
+                        System.out.print("Please enter your address : ");
+                        String address = s.nextLine();
+                        System.out.print("Please enter your telephone number : ");
+                        String phone = s.nextLine();
+                        System.out.print("Please enter your email : ");
+                        String email = s.nextLine();
                         System.out.println();
+
+                        RegisterController registee = new RegisterController();
+                        registee.set(username, surname, password, address, phone, email);
+                        
+                        centext = new Context(registee);
+                        context.execute();
                     } else {
                         System.out.println("Unknow command.");
                     }
