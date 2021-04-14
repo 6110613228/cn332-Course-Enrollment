@@ -10,7 +10,7 @@ import java.util.List;
 class AuthController implements Controller {
 
     private Boolean authStatus = false;
-    private int role;
+    private String role;
 
     public void login(String username, String password) {
         
@@ -21,7 +21,7 @@ class AuthController implements Controller {
             System.out.println("Login successful.");
             System.out.printf("you logged in as %s %s\n", user.get(1) ,user.get(2));
             authStatus = true;
-            role = Integer.parseInt(user.get(7), 10);
+            role = user.get(7);
         } else {
             System.out.println("Login failed");
         }
@@ -31,7 +31,7 @@ class AuthController implements Controller {
         return authStatus;
     }
 
-    public int getRole() {
+    public String getRole() {
         return role;
     }
 
