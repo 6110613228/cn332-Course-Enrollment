@@ -25,6 +25,7 @@ public class ClientController {
     private String username;
     private String password;
     private String command;
+    private Boolean commandFlag = false;
 
     public void run() throws Exception {
         while(true) {
@@ -37,15 +38,18 @@ public class ClientController {
                 view.waiting();
                 command = s.nextLine();
                 
+                setFlag();
+
                 // Admin only scope
                 if (user.getRole() > 1) {
 
-                    if (command.equals("show users")) {
-
-                        List<List<Object>> data = userModel.getUsers();
-                        for (List row : data) {
-                            System.out.println(row);
-                        }
+                    switch (command) {
+                        case "status":
+                            System.out.println("Admin");
+                            clearFlag();
+                            break;
+                        default:
+                            break;
                     }
                 }
 
@@ -54,14 +58,19 @@ public class ClientController {
                     
                     // do something
                 }
-
+                
                 // Global scope
-                if (command.equals("exit") || command.equals("q") || command.equals("quit")) {
+                if (true) {
+                    if (command.equals("exit") || command.equals("q") || command.equals("quit")) {
 
-                    // Exit sequence
-                    view.exit(username);
-                    break;
-                } else {
+                        // Exit sequence
+                        view.exit(username);
+                        break;
+                    }
+                }
+
+                // if there're no command executed (flag not clear) print Unknow command.
+                if (commandFlag) {
                     System.out.println("Unknow command.");
                 }
             } else {
@@ -79,7 +88,15 @@ public class ClientController {
             }
             System.out.println("...");
             view.foot();
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.MILLISECONDS.sleep(50);
         }
+    }
+
+    private void setFlag() {
+        commandFlag = true;
+    }
+
+    private void clearFlag() {
+        commandFlag = false;
     }
 }
