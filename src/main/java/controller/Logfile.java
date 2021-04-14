@@ -24,8 +24,9 @@ public class Logfile extends Observer {
         
     }
 
-    public void update(Object detail) {
-        logger.info((String) detail);
+    public void update(Object detail,String result) {
+        logger.info(this.username+":"+this.getRole()+" "+(String) detail+" "+result);
     }
+    
 
 }
