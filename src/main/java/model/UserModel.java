@@ -5,6 +5,7 @@ import com.google.api.services.sheets.v4.model.ValueRange;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.io.IOException;
 
 /**
@@ -68,5 +69,28 @@ public class UserModel extends Model {
             }
         }
         return null;
+    }
+
+    public int getLastId() {
+        List<List<Object>> query;
+        try {
+            ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Users!A2:A").execute();
+            query = data.getValues();
+            return Collection.max(query) + 1;
+        } catch (Exception e) {
+            // 
+        }
+    }
+
+    public void addUser(String name, String surname, String password, String address, String phone, String email) {
+
+        String data[] = {getLastId(), name, surname, password, address, phone, email, "student"};
+
+        List<List<Object>> values = Arrays.asList(Array.asList(data));
+        ValueRange body = new ValueRange().setValues(values);
+        UpdateValuesResponse result = service.spreadsheets().values().update(spreadsheetId, String.format("Users!A%s:H", getLastId()-1), body)
+                                            .setValueInputOption(valueInputOption)
+                                            .execute();
+        System.out.printf("%d cells updated.", result.getUpdatedCells());
     }
 }
