@@ -24,8 +24,8 @@ public class Logfile {
         
     }
 
-    public void update(Object detail,String result) {
-        logger.info((String) detail+" "+result);
+    public void update(String username,String userRole,Object detail,String result) {
+        logger.info(username+" : "+userRole+" "+(String) detail+" "+result);
     }
     
 
