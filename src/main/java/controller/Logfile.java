@@ -3,7 +3,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-public class Logfile {
+//call from Subject class
+public class Logfile extends Observer{
     private String filename;
     private Logger logger;
     private FileHandler fh;
@@ -24,8 +25,8 @@ public class Logfile {
         
     }
 
-    public void update(String username,String userRole,Object detail,String result) {
-        logger.info(username+" : "+userRole+" "+(String) detail+" "+result);
+    public void update(String username,Object detail,String result) {
+        logger.info(username+" : "+(String) detail+" "+result);
     }
     
 
