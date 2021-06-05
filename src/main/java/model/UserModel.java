@@ -100,16 +100,14 @@ public class UserModel extends Model {
     
     public boolean addUser(String name, String surname, String password, String address, String phone, String email) {
 
-        Object data[] = {Integer.toString(getLastId()+1), name, surname, password, address, phone, email, "student"};
+        Object data[] = {Integer.toString(getLastId()+1), name, surname, password, address, phone, email, "student",0};
 
         List<List<Object>> values = Arrays.asList(Arrays.asList(data));
 
         ValueRange body = new ValueRange().setValues(values);
         try {
-            String range = String.format("Users!A%s:H%s", getLastId()+2, getLastId()+2);
-            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body)
-                                            .setValueInputOption("USER_ENTERED")
-                                            .execute();
+            String range = String.format("Users!A%s:I%s", getLastId()+2, getLastId()+2);
+            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).execute();
             return true;
         } catch(Exception e) {
             System.out.println(e);
@@ -124,10 +122,8 @@ public class UserModel extends Model {
 
         ValueRange body = new ValueRange().setValues(values);
         try {
-            String range = String.format("Users!A%s:H%s", getLastId()+2, getLastId()+2);
-            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body)
-                                            .setValueInputOption("USER_ENTERED")
-                                            .execute();
+            String range = String.format("Users!A%s:I%s", getLastId()+2, getLastId()+2);
+            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).execute();
             return true;
         } catch(Exception e) {
             System.out.println(e);
