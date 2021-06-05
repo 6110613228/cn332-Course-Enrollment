@@ -32,7 +32,7 @@ public class ClientController {
 
             // if user is already authenticated then run, if not login
             if (user.isAuth()) {
-
+                
                 view.head(username);
 
                 view.waiting();
