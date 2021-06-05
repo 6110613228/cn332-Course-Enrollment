@@ -29,7 +29,13 @@ public class ClientController {
 
     public void run() throws Exception {
         while(true) {
-
+            enrollCourseController x = new enrollCourseController();
+            dropCourseController y = new dropCourseController();
+                    x.execute("Triss", 1);
+                    x.execute("Triss", 1);
+                    x.execute("John",1);
+                    y.execute("Triss", 1);
+                    y.execute("Triss", 1);
             // if user is already authenticated then run, if not login
             if (user.isAuth()) {
                 

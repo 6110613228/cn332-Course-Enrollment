@@ -14,13 +14,13 @@ import java.io.IOException;
  * UserModel
  */
 public class UserModel extends Model {
-    
+    ArrayList<Integer>  Queue = new ArrayList<Integer>();
     public UserModel() {
         super();
     }
 
     public List<List<Object>> getUsers() {
-
+ 
         List<List<Object>> query = null;
         try {
             ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Users!A2:J").execute();
@@ -44,15 +44,19 @@ public class UserModel extends Model {
         }
         return null;
     }
-
-    public List<List<Object>> getUsers(String username) {
-
+    public ArrayList<Integer> getQueue(){
+        return Queue;
+    }
+    public List<List<Object>> getUsers(String username) { 
+        int rowNum = 2;
         List<List<Object>> users = getUsers();
         List<List<Object>> foundUsers = new ArrayList<>();
         for (List row : users) {
             if (row.get(1).equals(username)) {
                 foundUsers.add(row);
+                Queue.add(rowNum);
             }
+            rowNum +=1;
         }
 
         if (foundUsers.size() == 0) {
@@ -97,6 +101,24 @@ public class UserModel extends Model {
     public boolean addUser(String name, String surname, String password, String address, String phone, String email) {
 
         Object data[] = {Integer.toString(getLastId()+1), name, surname, password, address, phone, email, "student"};
+
+        List<List<Object>> values = Arrays.asList(Arrays.asList(data));
+
+        ValueRange body = new ValueRange().setValues(values);
+        try {
+            String range = String.format("Users!A%s:H%s", getLastId()+2, getLastId()+2);
+            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body)
+                                            .setValueInputOption("USER_ENTERED")
+                                            .execute();
+            return true;
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+    public boolean addUser(String name, String surname, String password, String address, String phone, String email,String cid) {
+
+        Object data[] = {Integer.toString(getLastId()+1), name, surname, password, address, phone, email, "student",cid};
 
         List<List<Object>> values = Arrays.asList(Arrays.asList(data));
 
