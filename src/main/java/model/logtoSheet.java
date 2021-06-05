@@ -42,10 +42,8 @@ public class logtoSheet extends Model{
 
         ValueRange body = new ValueRange().setValues(values);
         try {
-            String range = String.format("Log!A2:D2");
-            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body)
-                                            .setValueInputOption("Log")
-                                            .execute();
+            String range = String.format("Log!A%s:H%s", getLastId()+2, getLastId()+2);
+            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).execute();
             return true;
         } catch(Exception e) {
             System.out.println(e);

@@ -10,6 +10,7 @@ import java.io.IOException;
  * CourseModel
  */
 public class CourseModel extends Model {
+    private static int  Numrow = 1;
     public CourseModel() {
         super();
     }
@@ -26,14 +27,23 @@ public class CourseModel extends Model {
         }
         return query;
     }
+    public void travelRow(){
+        
+        Numrow +=1;
+    }
+    public int findRow(){
+        return Numrow;
+    }
     public List getCourse(String cId) {
-
+        
         // Assume that Id is unique
         List<List<Object>> course = getCourse();
 
         for (List row : course) {
             if (row.get(0).equals(cId)) {
+                Numrow+=1;
                 return row;
+                
             }
         }
         return null;
