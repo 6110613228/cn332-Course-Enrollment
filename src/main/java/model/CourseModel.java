@@ -62,7 +62,7 @@ public class CourseModel extends Model {
 
         ValueRange body = new ValueRange().setValues(values);
         try {
-            String range = String.format("Log!A%s:H%s", row, row);
+            String range = String.format("Courses!A%s:E%s", row, row);
             UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).execute();
             return true;
         } catch(Exception e) {
