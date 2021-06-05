@@ -36,7 +36,7 @@ public class logtoSheet extends Model{
 
     public boolean addInfo(String Date, String Info, String results, String user) {
 
-        Object data[] = {Date, Info, results,user};
+        Object data[] = {Date, Info, results, user};
 
         List<List<Object>> values = Arrays.asList(Arrays.asList(data));
 
