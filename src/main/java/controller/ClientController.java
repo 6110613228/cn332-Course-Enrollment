@@ -16,6 +16,7 @@ public class ClientController {
 
     private AuthController user = new AuthController();
     private UserModel userModel = new UserModel();
+    private showInformationController showInfo = new showInformationController();
     private Context context;
 
     private MainView view = new MainView();
@@ -96,9 +97,20 @@ public class ClientController {
                     }
                     else if (command.equals("drop")){
                         System.out.print("Enter cID of Course : ");
-                        String cID = s.next();
+                        String cID = s.nextLine();
                         dropObject.execute(username,cID );
                         
+                    }
+                    else if (command.equals("show course")){
+                        System.out.print("Enter cID of Course (press * for show all course) : ");
+                        String cID = s.nextLine();
+                        if(cID.equals("*")){
+                       showInfo.execute();
+                        }
+                        else{
+                            showInfo.execute(cID);
+                        }
+
                     }
 
                 }
