@@ -1,0 +1,18 @@
+Jun 06, 2021 4:24:28 PM controller.Logfile update
+INFO: d : Login failed
+Jun 06, 2021 4:26:08 PM controller.Logfile update
+INFO: Davie : login success
+Jun 06, 2021 4:26:17 PM controller.Logfile update
+INFO: Davie : show enroll success
+Jun 06, 2021 4:27:43 PM controller.Logfile update
+INFO: Davie : login success
+Jun 06, 2021 4:27:52 PM controller.Logfile update
+INFO: Davie : show course success
+Jun 06, 2021 4:33:21 PM controller.Logfile update
+INFO: Davie : login success
+Jun 06, 2021 4:33:31 PM controller.Logfile update
+INFO: Davie : java.lang.NullPointerException failed
+Jun 06, 2021 4:33:41 PM controller.Logfile update
+INFO: Davie : show course success
+Jun 06, 2021 4:33:51 PM controller.Logfile update
+INFO: Davie : show course success

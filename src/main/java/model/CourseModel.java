@@ -32,13 +32,30 @@ public class CourseModel extends Model {
         }
         return query;
     }
-<<<<<<< HEAD
     public List<List<Object>> getCourseByName(String cName) { 
         
         List<List<Object>> c = getCourse();
         List<List<Object>> foundcName= new ArrayList<>();
         for (List row : c) {
             if (row.get(1).equals(cName)) {
+                foundcName.add(row);
+               
+            }
+           
+        }
+
+        if (foundcName.size() == 0) {
+            return null;
+        }
+        return foundcName;
+    }
+
+    public List<List<Object>> getCourseBycID(String cID) { 
+        
+        List<List<Object>> c = getCourse();
+        List<List<Object>> foundcName= new ArrayList<>();
+        for (List row : c) {
+            if (row.get(0).equals(cID)) {
                 foundcName.add(row);
                
             }
@@ -65,8 +82,6 @@ public class CourseModel extends Model {
         }
         return query;
     }
-=======
->>>>>>> 6acc407091fa469c6150b78022f130823b591217
 
     public void travelRow(){
         Numrow +=1;

@@ -17,6 +17,7 @@ public class ClientController {
     private AuthController user = new AuthController();
     private UserModel userModel = new UserModel();
     private showInformationController showInfo = new showInformationController();
+    private showEnrollmentRatingController showEnroll = new showEnrollmentRatingController();
     private Context context;
 
     private MainView view = new MainView();
@@ -96,16 +97,37 @@ public class ClientController {
                         dropObject.execute(username,cID );
                         
                     }
+                    
                     else if (command.equals("show course")){
-                        System.out.print("Enter cID of Course (press * for show all course) : ");
+                        System.out.print("Enter Course Name of Course (press * for show all course) : ");
                         String cID = s.nextLine();
+                        try{
                         if(cID.equals("*")){
                             showInfo.execute();
                         }
                         else{
                             showInfo.execute(cID);
                         }
+                        ObserveObject.update(username, "show course", "success");    
                     }
+                    catch(Exception e){
+                        ObserveObject.update(username, e.toString(), "failed");
+                    }
+                }
+                    else if (command.equals("show enroll")){
+                        try{
+                        showEnroll.execute(username);
+                    ObserveObject.update(username, "show enroll", "success");  
+                        }
+                        catch (Exception e){
+                            ObserveObject.update(username, e.toString(), "failed");
+                        }  
+                    }
+
+                       
+
+                    
+
                 }
 
                 // Global scope
