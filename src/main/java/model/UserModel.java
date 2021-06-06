@@ -44,9 +44,11 @@ public class UserModel extends Model {
         }
         return null;
     }
+    
     public ArrayList<Integer> getQueue(){
         return Queue;
     }
+
     public List<List<Object>> getUsers(String username) { 
         int rowNum = 2;
         List<List<Object>> users = getUsers();

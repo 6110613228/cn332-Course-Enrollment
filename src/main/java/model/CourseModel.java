@@ -3,16 +3,19 @@ package model;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import com.google.api.services.sheets.v4.model.UpdateValuesResponse;
+
 import java.util.List;
+import java.util.Arrays;
 import java.util.ArrayList;
 
-import java.util.Arrays;
 import java.io.IOException;
 /**
  * CourseModel
  */
 public class CourseModel extends Model {
+
     private static int  Numrow = 1;
+
     public CourseModel() {
         super();
     }
@@ -29,6 +32,7 @@ public class CourseModel extends Model {
         }
         return query;
     }
+<<<<<<< HEAD
     public List<List<Object>> getCourseByName(String cName) { 
         
         List<List<Object>> c = getCourse();
@@ -61,14 +65,17 @@ public class CourseModel extends Model {
         }
         return query;
     }
+=======
+>>>>>>> 6acc407091fa469c6150b78022f130823b591217
 
     public void travelRow(){
-        
         Numrow +=1;
     }
+
     public int findRow(){
         return Numrow;
     }
+
     public List getCourse(String cId) {
         
         // Assume that Id is unique
@@ -77,14 +84,13 @@ public class CourseModel extends Model {
         for (List row : course) {
             travelRow();
             if (row.get(0).equals(cId)) {
-                
                 System.out.println(row);
                 return row;
-                
             }
         }
         return null;
     }
+
     public void resetRow(){
         Numrow = 1;
     }

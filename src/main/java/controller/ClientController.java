@@ -27,16 +27,15 @@ public class ClientController {
     private String password;
     private String command;
     private Boolean commandFlag = false;
+
     enrollCourseController enrollObject = new enrollCourseController();
     dropCourseController dropObject = new dropCourseController();
+
     Subject ObserveObject = new Subject();
+
     public void run() throws Exception {
         while(true) {
             
-             
-            
-           
-                   
             // if user is already authenticated then run, if not login
             if (user.isAuth()) {
                 
@@ -73,15 +72,13 @@ public class ClientController {
                         System.out.print("Enter cID of Course : ");
                         String cID = s.next();
                         enrollObject.execute(user,cID );
-                        
                     }
-                    else if (command.equals("drop")){
+                    else if (command.equals("drop")) {
                         System.out.print("Enter Student name : ");
                         String user = s.next();
                         System.out.print("Enter cID of Course : ");
                         String cID = s.next();
-                        dropObject.execute(user,cID );
-                        
+                        dropObject.execute(user,cID);
                     }
                     
                 }
@@ -89,14 +86,13 @@ public class ClientController {
                 // Student scope
                 if (user.getRole().equals("student")) {
                     if(command.equals("enroll")){
-                        
                         System.out.print("Enter cID of Course : ");
                         String cID = s.next();
-                        enrollObject.execute(username,cID );
-                        
+                        enrollObject.execute(username, cID);
                     }
                     else if (command.equals("drop")){
                         System.out.print("Enter cID of Course : ");
+<<<<<<< HEAD
                         String cID = s.nextLine();
                         dropObject.execute(username,cID );
                         
@@ -113,6 +109,11 @@ public class ClientController {
 
                     }
 
+=======
+                        String cID = s.next();
+                        dropObject.execute(username, cID);
+                    }
+>>>>>>> 6acc407091fa469c6150b78022f130823b591217
                 }
 
                 // Global scope
@@ -194,6 +195,8 @@ public class ClientController {
                     }
                 }
             }
+            // reset command
+            command = "";
             System.out.println("...");
             view.foot();
             TimeUnit.MILLISECONDS.sleep(50);
