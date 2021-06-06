@@ -42,8 +42,10 @@ public class CourseModel extends Model {
         List<List<Object>> course = getCourse();
         Numrow = 1;
         for (List row : course) {
+            travelRow();
             if (row.get(0).equals(cId)) {
-                travelRow();
+                
+                System.out.println(row);
                 return row;
                 
             }
@@ -54,16 +56,16 @@ public class CourseModel extends Model {
         Numrow = 1;
     }
 
-    public boolean addCourse(int row ,List Course) {
+    public boolean addCourse(int row ,String CID,String cName,String date,String seat,String quota) {
 
-        Object data = (Object) Course;
+        Object data[] = {CID,cName,date,seat,quota};
 
         List<List<Object>> values = Arrays.asList(Arrays.asList(data));
 
         ValueRange body = new ValueRange().setValues(values);
         try {
-            String range = String.format("Courses!A%s:E%s", row, row);
-            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).execute();
+            String range = String.format("Courses!A%s:E%s", row+"", row+"");
+            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).setValueInputOption("USER_ENTERED").execute();
             return true;
         } catch(Exception e) {
             System.out.println(e);

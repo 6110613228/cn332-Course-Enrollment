@@ -65,6 +65,23 @@ public class UserModel extends Model {
         return foundUsers;
     }
 
+    public List<List<Object>> EnrollmentInfo(String cID) { 
+        List<List<Object>> users = getUsers();
+        List<List<Object>> foundUsers = new ArrayList<>();
+        for (List row : users) {
+            if (row.get(8).equals(cID)) {
+                foundUsers.add(row);
+                
+            }
+           
+        }
+
+        if (foundUsers.size() == 0) {
+            return null;
+        }
+        return foundUsers;
+    }
+
     public List getUser(String username, String password) {
 
         List<List<Object>> users = getUsers();
@@ -100,30 +117,60 @@ public class UserModel extends Model {
     
     public boolean addUser(String name, String surname, String password, String address, String phone, String email) {
 
-        Object data[] = {Integer.toString(getLastId()+1), name, surname, password, address, phone, email, "student",0};
+        Object data[] = {Integer.toString(getLastId()+1), name, surname, password, address, phone, email, "student","0"};
 
         List<List<Object>> values = Arrays.asList(Arrays.asList(data));
 
         ValueRange body = new ValueRange().setValues(values);
         try {
             String range = String.format("Users!A%s:I%s", getLastId()+2, getLastId()+2);
-            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).execute();
+            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).setValueInputOption("USER_ENTERED").execute();
             return true;
         } catch(Exception e) {
             System.out.println(e);
         }
         return false;
     }
-    public boolean addUser(String name, String surname, String password, String address, String phone, String email,String cid) {
+    public int getLastRow() {
+        List<List<Object>> query;
+        
+        try {
+            ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Users!A2:A").execute();
+            query = data.getValues();
+            return query.size();
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return -1;
+    }
 
-        Object data[] = {Integer.toString(getLastId()+1), name, surname, password, address, phone, email, "student",cid};
+    public boolean addUser(String uID,String name, String surname, String password, String address, String phone, String email,String cid) {
+
+        Object data[] = {uID, name, surname, password, address, phone, email, "student",cid};
 
         List<List<Object>> values = Arrays.asList(Arrays.asList(data));
 
         ValueRange body = new ValueRange().setValues(values);
         try {
-            String range = String.format("Users!A%s:I%s", getLastId()+2, getLastId()+2);
-            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).execute();
+            String range = String.format("Users!A%s:I%s", getLastRow()+2, getLastRow()+2);
+            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).setValueInputOption("USER_ENTERED").execute();
+            return true;
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+    public boolean dropUser(int row,String uID,String name, String surname, String password, String address, String phone, String email,String cid) {
+
+        Object data[] = {uID, name, surname, password, address, phone, email, "student",cid+"(drop)"};
+
+        List<List<Object>> values = Arrays.asList(Arrays.asList(data));
+
+        ValueRange body = new ValueRange().setValues(values);
+        try {
+            String range = String.format("Users!A%s:I%s", row+"", row+"");
+            UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).setValueInputOption("USER_ENTERED").execute();
             return true;
         } catch(Exception e) {
             System.out.println(e);

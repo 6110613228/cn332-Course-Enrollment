@@ -26,16 +26,16 @@ public class ClientController {
     private String password;
     private String command;
     private Boolean commandFlag = false;
-
+    enrollCourseController enrollObject = new enrollCourseController();
+    dropCourseController dropObject = new dropCourseController();
+    Subject ObserveObject = new Subject();
     public void run() throws Exception {
         while(true) {
-            enrollCourseController x = new enrollCourseController();
-            dropCourseController y = new dropCourseController();
-                    x.execute("Triss", 1);
-                    x.execute("Triss", 1);
-                    x.execute("John",1);
-                    y.execute("Triss", 1);
-                    y.execute("Triss", 1);
+            
+             
+            
+           
+                   
             // if user is already authenticated then run, if not login
             if (user.isAuth()) {
                 
@@ -66,12 +66,40 @@ public class ClientController {
 
                 // Admin and teacher scope
                 if (user.getRole().equals("admin") || user.getRole().equals("teacher")) {
+                    if(command.equals("enroll")){
+                        System.out.print("Enter Student name : ");
+                        String user = s.next();
+                        System.out.print("Enter cID of Course : ");
+                        String cID = s.next();
+                        enrollObject.execute(user,cID );
+                        
+                    }
+                    else if (command.equals("drop")){
+                        System.out.print("Enter Student name : ");
+                        String user = s.next();
+                        System.out.print("Enter cID of Course : ");
+                        String cID = s.next();
+                        dropObject.execute(user,cID );
+                        
+                    }
                     
-                    // do something
                 }
                 
                 // Student scope
                 if (user.getRole().equals("student")) {
+                    if(command.equals("enroll")){
+                        
+                        System.out.print("Enter cID of Course : ");
+                        String cID = s.next();
+                        enrollObject.execute(username,cID );
+                        
+                    }
+                    else if (command.equals("drop")){
+                        System.out.print("Enter cID of Course : ");
+                        String cID = s.next();
+                        dropObject.execute(username,cID );
+                        
+                    }
 
                 }
 
@@ -115,6 +143,8 @@ public class ClientController {
                         System.out.println();
                         context = new Context(user);
                         context.execute(username, password);
+                        
+                        
                     } else if (command.equals("register")) {
                         System.out.println();
                         System.out.println("You are registering as a \"Student\".");
@@ -132,6 +162,9 @@ public class ClientController {
                         String phone = s.nextLine();
                         System.out.print("Please enter your email : ");
                         String email = s.nextLine();
+                        
+                        
+                       
                         System.out.println();
 
                         RegisterController registee = new RegisterController();
@@ -144,6 +177,8 @@ public class ClientController {
                         context.execute(username, password);
                     } else {
                         System.out.println("Unknow command.");
+                        
+                        ObserveObject.update("Unknown", "Unknow command", "failed");
                     }
                 }
             }

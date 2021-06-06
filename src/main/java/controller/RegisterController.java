@@ -27,7 +27,10 @@ class RegisterController implements Controller {
 
     @Override
     public void execute() {
+        Subject observeSubject = new Subject();
         model.addUser(name, surname, password, address, phone, email);
+        observeSubject.update(name, "register", "susscess");
+        
     }
     @Override
     public void execute(Object a) {

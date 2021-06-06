@@ -1,7 +1,7 @@
 package controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import model.logtoSheet;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,9 +11,8 @@ public class LogOnGoogleSheet extends Observer{
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MMM-dd-yyyy hh:mm:ss a");
         String formattedDate = myDateObj.format(myFormatObj);
-        System.out.println(formattedDate+username+detail+result);
-        Object data[] = {formattedDate, username, detail ,result};
-        List<List<Object>> values = Arrays.asList(Arrays.asList(data));
+        logtoSheet log = new logtoSheet();
+        log.addInfo(formattedDate,username,(String)detail,result);
     }
 
 }

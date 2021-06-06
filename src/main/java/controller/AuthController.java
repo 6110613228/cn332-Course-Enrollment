@@ -8,7 +8,7 @@ import java.util.List;
  * LoginController
  */
 class AuthController implements Controller {
-
+    Subject ObserveObject = new Subject();
     private Boolean authStatus = false;
     private String role;
 
@@ -22,8 +22,11 @@ class AuthController implements Controller {
             System.out.printf("you logged in as %s %s\n", user.get(1) ,user.get(2));
             authStatus = true;
             role = user.get(7);
+            ObserveObject.update(username, "login", "success");
+
         } else {
             System.out.println("Login failed");
+            ObserveObject.update(username, "Login","failed");
         }
     }
 

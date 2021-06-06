@@ -14,8 +14,7 @@ public class Subject {
     logFile.update(username,detail,result);
     LogOnGoogleSheet LogOnGoogle = new LogOnGoogleSheet();
     LogOnGoogle.update(username, detail, result);
-    logtoSheet log = new logtoSheet();
-    log.addInfo("test", "test", "test", "test");
+    
   }
 
     
