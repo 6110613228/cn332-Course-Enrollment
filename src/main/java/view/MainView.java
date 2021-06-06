@@ -48,4 +48,7 @@ public class MainView {
         foot();
     }
 
+    public void printHeadTable() {
+        System.out.println("CID            cName          date           seat           quota");
+    }
 }

@@ -3,12 +3,17 @@ import java.util.List;
 import model.CourseModel;
 import model.UserModel;
 import java.util.ArrayList;
+
+import view.MainView;
 /**
  * showEnrollmentRatingController
  */
 class showEnrollmentRatingController implements Controller {
+
     UserModel user = new UserModel();
     CourseModel course = new CourseModel();
+    MainView view = new MainView();
+
     @Override
     public void execute() {
         // TODO Auto-generated method stub
@@ -30,16 +35,13 @@ class showEnrollmentRatingController implements Controller {
 
            
         }
-        System.out.println("CID            cName          date           seat           quota");
+        view.printHeadTable();
         for (String num : cIDList){
             for(List<Object> row :course.getCourseBycID(num)){
                 String table = String.format("%-15s%-15s%-15s%-15s%-15s", row.get(0),row.get(1),row.get(2),row.get(3),row.get(4));
                 System.out.println(table);
             }
         }
-
-        
-        
     }
 
     @Override

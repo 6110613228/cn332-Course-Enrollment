@@ -101,11 +101,11 @@ public class ClientController {
                     else if (command.equals("show course")){
                         System.out.print("Enter Course Name of Course (press * for show all course) : ");
                         String cID = s.nextLine();
-                        try{
-                        if(cID.equals("*")){
+                    try {
+                        if(cID.equals("*")) {
                             showInfo.execute();
                         }
-                        else{
+                        else {
                             showInfo.execute(cID);
                         }
                         ObserveObject.update(username, "show course", "success");    
@@ -114,20 +114,14 @@ public class ClientController {
                         ObserveObject.update(username, e.toString(), "failed");
                     }
                 }
-                    else if (command.equals("show enroll")){
-                        try{
+                    else if (command.equals("show enroll")) {
+                        try {
                         showEnroll.execute(username);
-                    ObserveObject.update(username, "show enroll", "success");  
-                        }
-                        catch (Exception e){
+                        ObserveObject.update(username, "show enroll", "success");  
+                        } catch (Exception e) {
                             ObserveObject.update(username, e.toString(), "failed");
                         }  
                     }
-
-                       
-
-                    
-
                 }
 
                 // Global scope
