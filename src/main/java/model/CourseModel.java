@@ -32,7 +32,6 @@ public class CourseModel extends Model {
         }
         return query;
     }
-<<<<<<< HEAD
     public List<List<Object>> getCourseByName(String cName) { 
         
         List<List<Object>> c = getCourse();
@@ -65,8 +64,6 @@ public class CourseModel extends Model {
         }
         return query;
     }
-=======
->>>>>>> 6acc407091fa469c6150b78022f130823b591217
 
     public void travelRow(){
         Numrow +=1;

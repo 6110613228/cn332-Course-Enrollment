@@ -17,6 +17,7 @@ public class ClientController {
     private AuthController user = new AuthController();
     private UserModel userModel = new UserModel();
     private showInformationController showInfo = new showInformationController();
+    private showEnrollmentRatingController showEnroll = new showEnrollmentRatingController();
     private Context context;
 
     private MainView view = new MainView();
@@ -105,6 +106,13 @@ public class ClientController {
                         else{
                             showInfo.execute(cID);
                         }
+
+                    }
+                    else if (command.equals("show enroll")){
+                        showEnroll.execute(username);
+                        
+                        
+                       
 
                     }
 
