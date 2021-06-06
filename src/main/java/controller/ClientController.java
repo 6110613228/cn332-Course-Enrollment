@@ -97,9 +97,11 @@ public class ClientController {
                         dropObject.execute(username,cID );
                         
                     }
+                    
                     else if (command.equals("show course")){
-                        System.out.print("Enter cID of Course (press * for show all course) : ");
+                        System.out.print("Enter Course Name of Course (press * for show all course) : ");
                         String cID = s.nextLine();
+                        try{
                         if(cID.equals("*")){
                        showInfo.execute();
                         }
@@ -108,13 +110,23 @@ public class ClientController {
                         }
                         ObserveObject.update(username, "show course", "success");    
                     }
+                    catch(Exception e){
+                        ObserveObject.update(username, e.toString(), "failed");
+                    }
+                }
                     else if (command.equals("show enroll")){
+                        try{
                         showEnroll.execute(username);
-                    ObserveObject.update(username, "show enroll", "success");    
-                        
+                    ObserveObject.update(username, "show enroll", "success");  
+                        }
+                        catch (Exception e){
+                            ObserveObject.update(username, e.toString(), "failed");
+                        }  
+                    }
+
                        
 
-                    }
+                    
 
                 }
 
