@@ -39,6 +39,6 @@ Suggested command to execute program
     - student
 4. Course Enrollment (3129)
 5. Course cancelation (Drop) (3129)
-6. Show enrollment rating (3087)
+6. Show enrollment (3087)
 7. Show information (3087)
 8. Log file (3129)
