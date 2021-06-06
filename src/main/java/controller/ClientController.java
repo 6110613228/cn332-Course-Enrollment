@@ -92,7 +92,6 @@ public class ClientController {
                     }
                     else if (command.equals("drop")){
                         System.out.print("Enter cID of Course : ");
-<<<<<<< HEAD
                         String cID = s.nextLine();
                         dropObject.execute(username,cID );
                         
@@ -109,11 +108,6 @@ public class ClientController {
 
                     }
 
-=======
-                        String cID = s.next();
-                        dropObject.execute(username, cID);
-                    }
->>>>>>> 6acc407091fa469c6150b78022f130823b591217
                 }
 
                 // Global scope
