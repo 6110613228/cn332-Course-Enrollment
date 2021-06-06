@@ -75,15 +75,15 @@ class enrollCourseController implements Controller {
             System.out.println("this course have no quota.");
             ObserveObject.update((String) a, "Enroll Course : "+cID, "have no quato");
         } else {
-            quota = quota -1 ;
+            quota = quota - 1;
             enrollCourse.set(4, "" + quota);
             int row = course.findRow();
             System.out.println(row);
             addCourse.addCourse(row, enrollCourse.get(0), enrollCourse.get(1), enrollCourse.get(2), enrollCourse.get(3), enrollCourse.get(4));
             System.out.println("--------------------------------");
-            System.out.println(uID+ " "+name+":"+surname+" " + password + " "+ address + " " +phone + " "+ email);
+            System.out.println(uID + " " + name + ":" + surname + " " + password + " "+ address + " " +phone + " " + email);
             user.addUser(uID,name, surname, password, address, phone, email, cID);
-            ObserveObject.update((String) a, "Enroll Course : "+cID, "Success");
+            ObserveObject.update((String) a, "Enroll Course : " + cID, "Success");
             System.out.println("enroll Successful");
         }
     } // End execute

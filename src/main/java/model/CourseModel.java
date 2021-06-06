@@ -15,7 +15,7 @@ import java.io.IOException;
 public class CourseModel extends Model {
 
     private static int  Numrow = 1;
-    
+
     public CourseModel() {
         super();
     }
@@ -49,7 +49,6 @@ public class CourseModel extends Model {
         for (List row : course) {
             travelRow();
             if (row.get(0).equals(cId)) {
-                
                 System.out.println(row);
                 return row;
             }

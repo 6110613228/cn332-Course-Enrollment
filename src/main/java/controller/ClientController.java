@@ -29,7 +29,7 @@ public class ClientController {
 
     enrollCourseController enrollObject = new enrollCourseController();
     dropCourseController dropObject = new dropCourseController();
-    
+
     Subject ObserveObject = new Subject();
 
     public void run() throws Exception {
@@ -71,15 +71,13 @@ public class ClientController {
                         System.out.print("Enter cID of Course : ");
                         String cID = s.next();
                         enrollObject.execute(user,cID );
-                        
                     }
-                    else if (command.equals("drop")){
+                    else if (command.equals("drop")) {
                         System.out.print("Enter Student name : ");
                         String user = s.next();
                         System.out.print("Enter cID of Course : ");
                         String cID = s.next();
-                        dropObject.execute(user,cID );
-                        
+                        dropObject.execute(user,cID);
                     }
                     
                 }
@@ -87,19 +85,15 @@ public class ClientController {
                 // Student scope
                 if (user.getRole().equals("student")) {
                     if(command.equals("enroll")){
-                        
                         System.out.print("Enter cID of Course : ");
                         String cID = s.next();
-                        enrollObject.execute(username,cID );
-                        
+                        enrollObject.execute(username, cID);
                     }
                     else if (command.equals("drop")){
                         System.out.print("Enter cID of Course : ");
                         String cID = s.next();
-                        dropObject.execute(username,cID );
-                        
+                        dropObject.execute(username, cID);
                     }
-
                 }
 
                 // Global scope
@@ -181,6 +175,8 @@ public class ClientController {
                     }
                 }
             }
+            // reset command
+            command = "";
             System.out.println("...");
             view.foot();
             TimeUnit.MILLISECONDS.sleep(50);
