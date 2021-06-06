@@ -19,6 +19,7 @@ public class logtoSheet extends Model{
     public logtoSheet() {
        super();
     }
+
     public int getLastId() {
         List<List<Object>> query;
         
@@ -26,13 +27,11 @@ public class logtoSheet extends Model{
             ValueRange data = connection.spreadsheets().values().get(spreadsheetId, "Log!D2:D").execute();
             query = data.getValues();
             return query.size();
-            
         } catch (Exception e) {
             System.out.println(e);
         }
         return 0;
     }
-
 
     public boolean addInfo(String Date, String Info, String results, String user) {
 
@@ -41,6 +40,7 @@ public class logtoSheet extends Model{
         List<List<Object>> values = Arrays.asList(Arrays.asList(data));
 
         ValueRange body = new ValueRange().setValues(values);
+
         try {
             String range = String.format("Log!A%s:H%s", getLastId()+2, getLastId()+2);
             UpdateValuesResponse result = connection.spreadsheets().values().update(spreadsheetId, range, body).setValueInputOption("USER_ENTERED").execute();

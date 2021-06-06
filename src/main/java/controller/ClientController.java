@@ -26,16 +26,15 @@ public class ClientController {
     private String password;
     private String command;
     private Boolean commandFlag = false;
+
     enrollCourseController enrollObject = new enrollCourseController();
     dropCourseController dropObject = new dropCourseController();
+    
     Subject ObserveObject = new Subject();
+
     public void run() throws Exception {
         while(true) {
             
-             
-            
-           
-                   
             // if user is already authenticated then run, if not login
             if (user.isAuth()) {
                 
