@@ -100,14 +100,12 @@ public class ClientController {
                         System.out.print("Enter cID of Course (press * for show all course) : ");
                         String cID = s.nextLine();
                         if(cID.equals("*")){
-                       showInfo.execute();
+                            showInfo.execute();
                         }
                         else{
                             showInfo.execute(cID);
                         }
-
                     }
-
                 }
 
                 // Global scope
