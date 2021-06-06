@@ -106,11 +106,11 @@ public class ClientController {
                         else{
                             showInfo.execute(cID);
                         }
-
+                        ObserveObject.update(username, "show course", "success");    
                     }
                     else if (command.equals("show enroll")){
                         showEnroll.execute(username);
-                        
+                    ObserveObject.update(username, "show enroll", "success");    
                         
                        
 

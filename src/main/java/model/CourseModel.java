@@ -49,6 +49,24 @@ public class CourseModel extends Model {
         }
         return foundcName;
     }
+
+    public List<List<Object>> getCourseBycID(String cID) { 
+        
+        List<List<Object>> c = getCourse();
+        List<List<Object>> foundcName= new ArrayList<>();
+        for (List row : c) {
+            if (row.get(0).equals(cID)) {
+                foundcName.add(row);
+               
+            }
+           
+        }
+
+        if (foundcName.size() == 0) {
+            return null;
+        }
+        return foundcName;
+    }
     
 
 
